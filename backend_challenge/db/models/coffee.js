@@ -12,11 +12,11 @@ module.exports = (sequelize, DataTypes) => {
   );
   Coffee.associate = function (models) {
     // associations can be defined here
-    Coffee.hasMany(models.Note, {
-      foreignKey: "coffee",
-      onDelete: "CASCADE",
-      hooks: true,
-    });
+    // Coffee.hasMany(models.Note, {
+    //   foreignKey: "coffee",
+    //   onDelete: "CASCADE",
+    //   hooks: true,
+    // });
   };
   return Coffee;
 };
