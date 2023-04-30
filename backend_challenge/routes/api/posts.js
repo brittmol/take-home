@@ -42,7 +42,6 @@ router.get(
   })
 );
 
-// TODO: also allow name instead of id
 router.get(
   "/coffee/:id",
   asyncHandler(async (req, res) => {
