@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   Post.associate = function (models) {
     // associations can be defined here
-    // Post.belongsTo(models.Coffee, { foreignKey: "coffee" });
+    Post.belongsTo(models.Coffee, { foreignKey: "coffee" });
   };
   return Post;
 };
