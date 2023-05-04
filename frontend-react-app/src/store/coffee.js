@@ -1,4 +1,5 @@
 import { csrfFetch } from "./csrf";
+import { deletePost } from "./post";
 
 // ----------------- ACTIONS ----------------------------------
 
@@ -55,8 +56,12 @@ export const removeCoffee = (data) => async (dispatch) => {
     method: "DELETE",
   });
   if (response.ok) {
-    const coffee = await response.json();
+    const { coffee, posts } = await response.json();
     dispatch(deleteCoffee(coffee));
+    for (let i = 0; i < posts.length; i++) {
+      const post = posts[i];
+      dispatch(deletePost(post))
+    }
   }
 };
 

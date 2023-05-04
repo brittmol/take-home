@@ -15,7 +15,7 @@ const addPost = (post) => ({
 });
 
 const DELETE_POST = "posts/deletePost";
-const deletePost = (post) => ({
+export const deletePost = (post) => ({
   type: DELETE_POST,
   post,
 });

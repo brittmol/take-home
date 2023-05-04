@@ -14,7 +14,7 @@ export default function CreatePost() {
 
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState("");
   const [coffee, setCoffee] = useState("");
   const [errors, setErrors] = useState([]);
 

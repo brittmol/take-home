@@ -1,7 +1,7 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 
-const { Coffee } = require("../../db/models");
+const { Coffee, Post } = require("../../db/models");
 
 const router = express.Router();
 
@@ -49,9 +49,12 @@ router.post("/", asyncHandler(async(req, res) => {
 router.delete("/:id", asyncHandler(async(req, res) => {
   const {id} = req.params
   const coffee = await Coffee.findByPk(id)
+  const posts = await Post.findAll({
+    where: {coffee: id}
+  })
   if (!coffee) throw new Error("Cannot find Coffee")
   await coffee.destroy()
-  return res.json(coffee)
+  return res.json({coffee, posts})
 }))
 
 module.exports = router;
