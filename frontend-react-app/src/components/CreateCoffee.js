@@ -1,14 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { createCoffee } from "../store/coffee";
 
 export default function CreateCoffee() {
   const dispatch = useDispatch();
 
+  const [showForm, setShowForm] = useState(false)
+
+  const showFormBtn = () => {
+    if (!showForm) {
+      setShowForm(true)
+    }
+    else setShowForm(false)
+  }
+
+  useEffect(() => {
+    if (!showForm) return;
+    const closeForm = () => {
+      setShowForm(false)
+    }
+    document.addEventListener('click', closeForm)
+    return () => document.removeEventListener('click', closeForm)
+  }, [showForm])
+
+
   const [name, setName] = useState("");
   const [year, setYear] = useState("");
   const [caffContent, setCaffContent] = useState("");
-  const [caffPercent, setCaffPercent] = useState("");
+  // const [caffPercent, setCaffPercent] = useState("");
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = async (e) => {
@@ -18,10 +37,8 @@ export default function CreateCoffee() {
       name,
       year,
       caffeine_content: caffContent,
-      caffeine_percentage: caffPercent,
+      caffeine_percentage: caffContent,
     };
-
-    console.log("payload", payload);
 
     setErrors([]);
     const newCoffee = await dispatch(createCoffee(payload))
@@ -33,54 +50,52 @@ export default function CreateCoffee() {
 
     if (newCoffee) {
       // close pop up
+      setShowForm(false)
       setName("");
       setYear("");
       setCaffContent("");
-      setCaffPercent("");
+      // setCaffPercent("");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>New Coffee</h2>
-      <ul style={{ color: "white" }}>
-        {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
-        ))}
-      </ul>
-      <label>
-        Name:
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </label>
-      <label>
-        Year:
-        <input
-          type="number"
-          value={year}
-          onChange={(e) => setYear(e.target.value)}
-        />
-      </label>
-      <label>
-        Caffeine Content:
-        <input
-          type="number"
-          value={caffContent}
-          onChange={(e) => setCaffContent(e.target.value)}
-        />
-      </label>
-      <label>
-        Caffeine Percentage:
-        <input
-          type="number"
-          value={caffPercent}
-          onChange={(e) => setCaffPercent(e.target.value)}
-        />
-      </label>
-      <button type="submit">Add</button>
-    </form>
+    <>
+      <button onClick={showFormBtn}>Create Coffee</button>
+      {showForm && (
+          <form className="profile-dropdown" onSubmit={handleSubmit}>
+            <h2>New Coffee</h2>
+            <ul style={{ color: "white" }}>
+              {errors.map((error, idx) => (
+                <li key={idx}>{error}</li>
+              ))}
+            </ul>
+            <label>
+              Name:
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </label>
+            <label>
+              Year:
+              <input
+                type="number"
+                value={year}
+                onChange={(e) => setYear(e.target.value)}
+              />
+            </label>
+            <label>
+              Caffeine Content:
+              <input
+                type="number"
+                value={caffContent}
+                onChange={(e) => setCaffContent(e.target.value)}
+              />
+            </label>
+            <button type="submit">Add</button>
+          </form>
+      )}
+    </>
   );
 }

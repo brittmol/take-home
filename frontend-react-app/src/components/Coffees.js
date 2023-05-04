@@ -17,7 +17,7 @@ export default function Coffees() {
       <div>
         {coffeesArr?.map((coffee) => (
           <div key={coffee?.id}>
-            {coffee?.name}, {coffee?.year}
+            {coffee?.name} - {coffee?.year}
             <button onClick={() => dispatch(removeCoffee(coffee))}>X</button>
           </div>
         ))}

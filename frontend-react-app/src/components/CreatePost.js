@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCoffees } from "../store/coffee";
 import { createPost } from "../store/post";
+import { Modal } from "../context/Modal";
 
 export default function CreatePost() {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ export default function CreatePost() {
     dispatch(getCoffees());
   }, [dispatch]);
 
+  const [showModal, setShowModal] = useState(false);
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [rating, setRating] = useState("");
@@ -40,6 +42,7 @@ export default function CreatePost() {
 
     if (newPost) {
       // close pop up
+      setShowModal(false);
       setTitle("");
       setText("");
       setRating("");
@@ -48,49 +51,59 @@ export default function CreatePost() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>New Post</h2>
-      <ul style={{ color: "white" }}>
-        {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
-        ))}
-      </ul>
-      <label>
-        Title:
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      </label>
-      <label>
-        Text:
-        <input
-          type="text"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
-      </label>
-      <label>
-        Rating:
-        <input
-          type="number"
-          value={rating}
-          onChange={(e) => setRating(e.target.value)}
-        />
-      </label>
-      <label>
-        Select Coffee
-        <select value={coffee} onChange={(e) => setCoffee(e.target.value)}>
-        <option value="">------</option>
-          {coffeesArr?.map((coffee) => (
-            <option key={coffee?.id} value={coffee?.id}>
-              {coffee?.name}
-            </option>
-          ))}
-        </select>
-      </label>
-      <button type="submit">Add</button>
-    </form>
+    <>
+      <button onClick={() => setShowModal(true)}>Create Post</button>
+      {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+          <form onSubmit={handleSubmit}>
+            <h2>New Post</h2>
+            <ul style={{ color: "white" }}>
+              {errors.map((error, idx) => (
+                <li key={idx}>{error}</li>
+              ))}
+            </ul>
+            <label>
+              Title:
+              <input
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </label>
+            <label>
+              Text:
+              <input
+                type="text"
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+              />
+            </label>
+            <label>
+              Rating:
+              <input
+                type="number"
+                value={rating}
+                onChange={(e) => setRating(e.target.value)}
+              />
+            </label>
+            <label>
+              Select Coffee
+              <select
+                value={coffee}
+                onChange={(e) => setCoffee(e.target.value)}
+              >
+                <option value="">------</option>
+                {coffeesArr?.map((coffee) => (
+                  <option key={coffee?.id} value={coffee?.id}>
+                    {coffee?.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <button type="submit">Add</button>
+          </form>
+        </Modal>
+      )}
+    </>
   );
 }
