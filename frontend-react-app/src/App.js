@@ -6,17 +6,4 @@ function App() {
 
 export default App;
 
-/*
-sss
-dsadf
-asdfs
-asdfadf
-asdfa
-sdfafd
-asfdf
-asdff
-asdfadf
-asdf
-afdfda
-ddddd
-*/
+
