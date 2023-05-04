@@ -20,7 +20,7 @@ export default function Posts() {
             <div>{post?.title}</div>
             <div>{post?.rating}</div>
             <div>{post?.text}</div>
-            <div>{post?.Coffee?.name}</div>
+            <div>{post?.Coffee?.name || 'N/A   '}</div>
             <button onClick={() => dispatch(removePost(post))}>X</button>
           </div>
         ))}

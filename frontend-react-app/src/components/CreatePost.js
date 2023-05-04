@@ -82,6 +82,7 @@ export default function CreatePost() {
       <label>
         Select Coffee
         <select value={coffee} onChange={(e) => setCoffee(e.target.value)}>
+        <option value="">------</option>
           {coffeesArr?.map((coffee) => (
             <option key={coffee?.id} value={coffee?.id}>
               {coffee?.name}
