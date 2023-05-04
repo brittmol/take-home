@@ -2,6 +2,7 @@
 import Posts from "./components/Posts";
 import Coffees from "./components/Coffees";
 import CreateCoffee from "./components/CreateCoffee";
+import CreatePost from "./components/CreatePost";
 
 export default function App() {
   return (
@@ -10,6 +11,7 @@ export default function App() {
       <Coffees />
       <CreateCoffee />
       <div>----------------------------------</div>
+      <CreatePost />
       <Posts />
     </>
   );
