@@ -14,8 +14,8 @@ export default function Coffees() {
   }, [dispatch]);
 
   return (
-    <>
-      <div className="coffees">
+    <div className="coffees">
+      <div>
         <h2>Coffees</h2>
         <CreateCoffee />
       </div>
@@ -28,6 +28,6 @@ export default function Coffees() {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }

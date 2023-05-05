@@ -6,8 +6,17 @@
   }
 
 .app {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  border: 2px red solid;
 }
 
+.coffees {
+  width: 200px;
+  border: 2px pink solid;
+}
 
+.posts {
+  width: 500px;
+  border: 2px blue solid;
+}

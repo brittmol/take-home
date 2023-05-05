@@ -5,6 +5,7 @@ import Coffees from "./components/Coffees";
 export default function App() {
   return (
     <div className="app">
+      <div className="coffees"></div>
       <div>
         <Posts />
       </div>

@@ -14,8 +14,8 @@ export default function Posts() {
   }, [dispatch]);
 
   return (
-    <>
-      <div className="posts">
+    <div className="posts">
+      <div>
         <h2>Posts</h2>
         <CreatePost />
         <button>Asc or Desc</button>
@@ -31,6 +31,6 @@ export default function Posts() {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }
