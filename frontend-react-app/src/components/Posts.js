@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getPosts, removePost } from "../store/post";
+import { StarRating } from "./Assets";
 
 export default function Posts() {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ export default function Posts() {
           <div key={post?.id}>
             <div>{post?.title}</div>
             <div>{post?.rating}</div>
+            <div>{StarRating(post?.rating)}</div>
             <div>{post?.text}</div>
             <div>{post?.Coffee?.name}</div>
             <button onClick={() => dispatch(removePost(post))}>X</button>
