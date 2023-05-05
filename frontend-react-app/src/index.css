@@ -1,4 +1,6 @@
 /* TODO Add site wide styles */
-.profile-dropdown {
+.create-coffee {
     position: absolute;
+    background-color: white;
+    border: 2px orange solid;
   }

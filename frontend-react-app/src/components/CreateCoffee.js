@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createCoffee } from "../store/coffee";
 
@@ -11,18 +11,13 @@ export default function CreateCoffee() {
     if (!showForm) {
       setShowForm(true)
     }
-    else setShowForm(false)
-  }
-
-  useEffect(() => {
-    if (!showForm) return;
-    const closeForm = () => {
+    else {
       setShowForm(false)
+      setName("");
+      setYear("");
+      setCaffContent("");
     }
-    document.addEventListener('click', closeForm)
-    return () => document.removeEventListener('click', closeForm)
-  }, [showForm])
-
+  }
 
   const [name, setName] = useState("");
   const [year, setYear] = useState("");
@@ -62,7 +57,7 @@ export default function CreateCoffee() {
     <>
       <button onClick={showFormBtn}>Create Coffee</button>
       {showForm && (
-          <form className="profile-dropdown" onSubmit={handleSubmit}>
+          <form className="create-coffee" onSubmit={handleSubmit}>
             <h2>New Coffee</h2>
             <ul style={{ color: "white" }}>
               {errors.map((error, idx) => (
