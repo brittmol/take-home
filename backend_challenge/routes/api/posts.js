@@ -51,6 +51,7 @@ router.get(
     if (!isNaN(id)) {
       post = await Post.findAll({
         where: { coffee: id },
+        include: [{model: Coffee}],
       });
     } else {
       const coffeeObj = await Coffee.findOne({
@@ -58,6 +59,7 @@ router.get(
       })
       post = await Post.findAll({
         where: { coffee: coffeeObj.id},
+        include: [{model: Coffee}],
       });
 
     }
@@ -69,7 +71,7 @@ router.post(
   "/",
   asyncHandler(async (req, res) => {
     const post = await Post.create(req.body);
-    const newPost = await Post.findByPk(post.id);
+    const newPost = await Post.findByPk(post.id, {include: [{model: Coffee}]});
     return res.json(newPost);
   })
 );
@@ -81,7 +83,7 @@ router.delete(
     const post = await Post.findByPk(id);
     if (!post) throw new Error("Cannot find Coffee");
     await post.destroy();
-    return res.json(Post);
+    return res.json(post);
   })
 );
 

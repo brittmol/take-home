@@ -51,12 +51,14 @@ export const createPost = (data) => async (dispatch) => {
 };
 
 export const removePost = (data) => async (dispatch) => {
+  console.log('inside of thunk', data)
   const response = await csrfFetch(`/api/posts/${data.id}`, {
     method: "DELETE",
   });
   if (response.ok) {
     const post = await response.json();
     dispatch(deletePost(post));
+    return post
   }
 };
 
