@@ -55,7 +55,7 @@ export default function CreateCoffee() {
 
   return (
     <>
-      <button onClick={showFormBtn}>Create Coffee</button>
+      <button onClick={showFormBtn}>New Coffee</button>
       {showForm && (
           <form className="create-coffee" onSubmit={handleSubmit}>
             <h2>New Coffee</h2>

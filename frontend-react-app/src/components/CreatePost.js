@@ -52,7 +52,7 @@ export default function CreatePost() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Create Post</button>
+      <button onClick={() => setShowModal(true)}>New Post</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <form onSubmit={handleSubmit}>

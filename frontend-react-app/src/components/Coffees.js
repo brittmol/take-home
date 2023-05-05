@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCoffees, removeCoffee } from "../store/coffee";
+import CreateCoffee from "./CreateCoffee";
+import { Mug } from "./Assets";
 
 export default function Coffees() {
   const dispatch = useDispatch();
@@ -13,10 +15,14 @@ export default function Coffees() {
 
   return (
     <>
-      <h2>List of Coffees</h2>
+      <div className="coffees">
+        <h2>Coffees</h2>
+        <CreateCoffee />
+      </div>
       <div>
         {coffeesArr?.map((coffee) => (
           <div key={coffee?.id}>
+            <Mug />
             {coffee?.name} - {coffee?.year}
             <button onClick={() => dispatch(removeCoffee(coffee))}>X</button>
           </div>

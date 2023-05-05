@@ -4,3 +4,10 @@
     background-color: white;
     border: 2px orange solid;
   }
+
+.app {
+  display: flex;
+  flex-direction: row;
+}
+
+
