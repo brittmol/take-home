@@ -17,10 +17,5 @@ export default function App() {
 }
 
 /*
-xxx
-xxx
-asdf
-sadf
-asdf
-asdf
+notes
 */
