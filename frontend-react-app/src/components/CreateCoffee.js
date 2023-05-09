@@ -5,19 +5,18 @@ import { createCoffee } from "../store/coffee";
 export default function CreateCoffee() {
   const dispatch = useDispatch();
 
-  const [showForm, setShowForm] = useState(false)
+  const [showForm, setShowForm] = useState(false);
 
   const showFormBtn = () => {
     if (!showForm) {
-      setShowForm(true)
-    }
-    else {
-      setShowForm(false)
+      setShowForm(true);
+    } else {
+      setShowForm(false);
       setName("");
       setYear("");
       setCaffContent("");
     }
-  }
+  };
 
   const [name, setName] = useState("");
   const [year, setYear] = useState("");
@@ -45,7 +44,7 @@ export default function CreateCoffee() {
 
     if (newCoffee) {
       // close pop up
-      setShowForm(false)
+      setShowForm(false);
       setName("");
       setYear("");
       setCaffContent("");
@@ -57,39 +56,41 @@ export default function CreateCoffee() {
     <>
       <button onClick={showFormBtn}>New Coffee</button>
       {showForm && (
-          <form className="create-coffee" onSubmit={handleSubmit}>
-            <h2>New Coffee</h2>
-            <ul style={{ color: "white" }}>
-              {errors.map((error, idx) => (
-                <li key={idx}>{error}</li>
-              ))}
-            </ul>
-            <label>
-              Name:
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </label>
-            <label>
-              Year:
-              <input
-                type="number"
-                value={year}
-                onChange={(e) => setYear(e.target.value)}
-              />
-            </label>
-            <label>
-              Caffeine Content:
-              <input
-                type="number"
-                value={caffContent}
-                onChange={(e) => setCaffContent(e.target.value)}
-              />
-            </label>
-            <button type="submit">Add</button>
-          </form>
+        <form className="create-coffee" onSubmit={handleSubmit}>
+          <h2>New Coffee</h2>
+          <ul style={{ color: "white" }}>
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </ul>
+          <div className="info">
+            <label>Name:</label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+
+          <div className="info">
+            <label>Year:</label>
+            <input
+              type="number"
+              value={year}
+              onChange={(e) => setYear(e.target.value)}
+            />
+          </div>
+
+          <div className="info">
+            <label>Caffeine:</label>
+            <input
+              type="number"
+              value={caffContent}
+              onChange={(e) => setCaffContent(e.target.value)}
+            />
+          </div>
+          <button type="submit">Add</button>
+        </form>
       )}
     </>
   );
