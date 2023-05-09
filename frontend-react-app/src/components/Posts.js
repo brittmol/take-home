@@ -9,11 +9,26 @@ export default function Posts() {
 
   const posts = useSelector((state) => state.postReducer);
   const postsArr = Object.values(posts);
+
+  // console.log('postsArr', postsArr)
+  let asc = [...postsArr]
+  let desc = [...postsArr]
+  desc.sort((a, b) => {
+    return b.id - a.id
+  })
+
+  console.log("asc", asc);
+  console.log("desc", desc);
   const [sortPosts, setSortPosts] = useState("asc");
+  const [allPosts, setAllPosts] = useState(asc)
+  console.log('sort', sortPosts)
+  console.log('all', allPosts)
 
   useEffect(() => {
     dispatch(getPosts());
-  }, [dispatch]);
+    if (sortPosts == 'asc') setAllPosts(asc)
+    if (sortPosts == 'desc') setAllPosts(desc)
+  }, [dispatch, sortPosts]);
 
   return (
     <div className="posts-container">
@@ -35,7 +50,7 @@ export default function Posts() {
         </div>
       </div>
       <div className="posts">
-        {postsArr?.map((post) => (
+        {allPosts?.map((post) => (
           <div className="single-post" key={post?.id}>
             <div className="post-info">
               <div className="post-title">{post?.title}</div>

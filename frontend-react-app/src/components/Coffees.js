@@ -25,7 +25,7 @@ export default function Coffees() {
         {coffeesArr?.map((coffee) => (
           <div className="single-coffee" key={coffee?.id}>
             <div>
-              <Mug />
+              <Mug/>
               {coffee?.name} - {coffee?.year}
             </div>
             <button

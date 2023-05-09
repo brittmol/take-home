@@ -99,6 +99,7 @@ button {
   border-radius: 5px 10px 5px 10px;
   border: 2px solid #c8954a;
   border-color: #6c541e #6c541e #c6944a #c6944a;
+  margin-left: 10px;
 }
 
 button:hover {
