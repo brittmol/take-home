@@ -26,8 +26,6 @@ export default function Coffees() {
           <div className="single-coffee" key={coffee?.id}>
             <div>
               <Mug />
-            </div>
-            <div>
               {coffee?.name} - {coffee?.year}
             </div>
             <button

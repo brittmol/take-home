@@ -12,15 +12,16 @@ body {
 
 .app {
   display: grid;
-  grid-template-columns: auto auto auto;
-}
+  grid-template-columns: 1fr 3.5fr 1fr;
 
-.coffees {
-  width: 200px;
 }
 
 .posts-container {
-  width: 500px;
+  padding: 0 30px;
+}
+
+.coffees {
+  width: max-content;
 }
 
 .posts {
@@ -29,11 +30,14 @@ body {
 }
 
 .single-post {
+  border-bottom: 2px #c6944a dashed;
+  padding: 30px 15px 5px 15px;
+}
+
+.post-info {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-bottom: 2px #c6944a dashed;
-  padding: 30px 15px 5px 15px;
 }
 
 .post-title {
@@ -42,7 +46,6 @@ body {
 
 .post-header, .single-coffee {
   border-top-left-radius: 15px;
-  /* box-shadow: -4px 1px #6c541e; */
   border-left: #6c541e 4px solid;
   border-bottom: #c8954a 2px solid;
 }
@@ -70,11 +73,16 @@ button {
   border-color: #6c541e #6c541e #c6944a #c6944a;
 }
 
+button:hover {
+  border: 2px solid #c8954a;
+  border-color: #c6944a #c6944a #6c541e #6c541e ;
+}
+
 .single-coffee {
   display: flex;
+  justify-content: space-between;
   margin: 10px 0;
   padding: 0px 10px;
-  width: max-content;
 }
 
 .single-coffee > div {
@@ -82,15 +90,18 @@ button {
 }
 
 .x {
-  display: none;
+  /* display: none; */
+  visibility: hidden;
 }
 
 .single-coffee:hover > .x,
 .post-coffee:hover > .x {
-  display: block;
+  /* display: block; */
+  visibility: visible;
 }
 
 .post-coffee {
   display: flex;
+  justify-content: space-around;
   padding: 30px 5px 5px 5px;
 }
