@@ -40,12 +40,23 @@ body {
   font-size: 20px;
 }
 
+.post-header, .single-coffee {
+  border-top-left-radius: 15px;
+  /* box-shadow: -4px 1px #6c541e; */
+  border-left: #6c541e 4px solid;
+  border-bottom: #c8954a 2px solid;
+}
+
+.single-coffee:hover {
+  border-left: #c8954a 4px solid;
+  box-shadow: 0 0 15px #c8954a;
+}
+
 .post-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top-left-radius: 15px;
-  box-shadow: -4px 1px #6c541e;
+  padding: 0px 10px;
 }
 
 .header-btn {
@@ -61,10 +72,9 @@ button {
 
 .single-coffee {
   display: flex;
-  margin: 10px;
-  padding: 5px 15px;
-  border-top-left-radius: 15px;
-  box-shadow: -4px 1px #6c541e;
+  margin: 10px 0;
+  padding: 0px 10px;
+  width: max-content;
 }
 
 .single-coffee > div {
@@ -72,7 +82,7 @@ button {
 }
 
 .x {
-  /* display: none; */
+  display: none;
 }
 
 .single-coffee:hover > .x,
@@ -83,5 +93,4 @@ button {
 .post-coffee {
   display: flex;
   padding: 30px 5px 5px 5px;
-  background-color: aqua;
 }
