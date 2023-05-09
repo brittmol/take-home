@@ -55,39 +55,31 @@ export default function CreatePost() {
       <button onClick={() => setShowModal(true)}>New Post</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <form onSubmit={handleSubmit}>
-            <h2>New Post</h2>
+          <form className="create-post" onSubmit={handleSubmit}>
+            <h2>Create Post</h2>
             <ul style={{ color: "white" }}>
               {errors.map((error, idx) => (
                 <li key={idx}>{error}</li>
               ))}
             </ul>
-            <label>
-              Title:
+            <div className="infox">
               <input
                 type="text"
+                placeholder="Title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
-            </label>
-            <label>
-              Text:
-              <input
-                type="text"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-              />
-            </label>
-            <label>
-              Rating:
+            </div>
+            <div className="infox">
               <input
                 type="number"
+                placeholder="Rating"
                 value={rating}
                 onChange={(e) => setRating(e.target.value)}
               />
-            </label>
-            <label>
-              Select Coffee
+            </div>
+            <div className="info">
+              <label>Coffee</label>
               <select
                 value={coffee}
                 onChange={(e) => setCoffee(e.target.value)}
@@ -99,8 +91,16 @@ export default function CreatePost() {
                   </option>
                 ))}
               </select>
-            </label>
-            <button type="submit">Add</button>
+            </div>
+            <div className="infox">
+              <input
+                type="text"
+                placeholder="Post text..."
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+              />
+            </div>
+            <button type="submit">Submit</button>
           </form>
         </Modal>
       )}

@@ -57,7 +57,7 @@ export default function CreateCoffee() {
       <button onClick={showFormBtn}>New Coffee</button>
       {showForm && (
         <form className="create-coffee" onSubmit={handleSubmit}>
-          <h2>New Coffee</h2>
+          <h2>Create Coffee</h2>
           <ul style={{ color: "white" }}>
             {errors.map((error, idx) => (
               <li key={idx}>{error}</li>
@@ -89,7 +89,7 @@ export default function CreateCoffee() {
               onChange={(e) => setCaffContent(e.target.value)}
             />
           </div>
-          <button type="submit">Add</button>
+          <button type="submit">Submit</button>
         </form>
       )}
     </>
