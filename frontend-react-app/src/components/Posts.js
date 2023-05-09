@@ -20,7 +20,7 @@ export default function Posts() {
   console.log("asc", asc);
   console.log("desc", desc);
   const [sortPosts, setSortPosts] = useState("asc");
-  const [allPosts, setAllPosts] = useState(asc)
+  const [allPosts, setAllPosts] = useState(postsArr)
   console.log('sort', sortPosts)
   console.log('all', allPosts)
 
