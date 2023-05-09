@@ -8,33 +8,49 @@ export default function Posts() {
   const dispatch = useDispatch();
 
   const posts = useSelector((state) => state.postReducer);
-  const postsArr = Object.values(posts)
-  const [sortPosts, setSortPosts] = useState('asc')
+  const postsArr = Object.values(posts);
+  const [sortPosts, setSortPosts] = useState("asc");
 
   useEffect(() => {
     dispatch(getPosts());
   }, [dispatch]);
 
   return (
-    <div className="posts">
-      <div>
-        <h2>Posts</h2>
-        <CreatePost />
-        <select value={sortPosts} onChange={(e) => setSortPosts(e.target.value)}>
-          <option value={'asc'}>asc</option>
-          <option value={'desc'}>desc</option>
-        </select>
+    <div className="posts-container">
+      <div className="post-header">
+        <div className="header-btn">
+          <h2>Posts</h2>
+          <div>
+            <CreatePost />
+          </div>
+        </div>
+        <div>
+          <select
+            value={sortPosts}
+            onChange={(e) => setSortPosts(e.target.value)}
+          >
+            <option value={"asc"}>asc</option>
+            <option value={"desc"}>desc</option>
+          </select>
+        </div>
       </div>
-      <div>
+      <div className="posts">
         {postsArr?.map((post) => (
-          <div key={post?.id}>
-            <div>{post?.title}</div>
+          <div className="single-post" key={post?.id}>
+            <div className="post-title">{post?.title}</div>
             <div>
               {StarRating(post?.rating)} {post?.rating}
             </div>
             <div>{post?.text}</div>
-            <div>{post?.Coffee?.name}</div>
-            <button onClick={() => dispatch(removePost(post))}>X</button>
+            <div className="post-coffee">
+              <div>
+                {post?.Coffee?.name} - {post?.Coffee?.caffeine_content} mg per
+                oz
+              </div>
+              <button className="x" onClick={() => dispatch(removePost(post))}>
+                X
+              </button>
+            </div>
           </div>
         ))}
       </div>

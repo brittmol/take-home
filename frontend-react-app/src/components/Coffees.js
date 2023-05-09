@@ -15,16 +15,27 @@ export default function Coffees() {
 
   return (
     <div className="coffees">
-      <div>
+      <div className="header-btn">
         <h2>Coffees</h2>
-        <CreateCoffee />
+        <div>
+          <CreateCoffee />
+        </div>
       </div>
       <div>
         {coffeesArr?.map((coffee) => (
-          <div key={coffee?.id}>
-            <Mug />
-            {coffee?.name} - {coffee?.year}
-            <button onClick={() => dispatch(removeCoffee(coffee))}>X</button>
+          <div className="single-coffee" key={coffee?.id}>
+            <div>
+              <Mug />
+            </div>
+            <div>
+              {coffee?.name} - {coffee?.year}
+            </div>
+            <button
+              className="x"
+              onClick={() => dispatch(removeCoffee(coffee))}
+            >
+              X
+            </button>
           </div>
         ))}
       </div>

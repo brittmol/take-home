@@ -1,22 +1,87 @@
 /* TODO Add site wide styles */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .create-coffee {
     position: absolute;
     background-color: white;
-    border: 2px orange solid;
+    border: 2px #6c541e solid;
   }
 
 .app {
   display: grid;
   grid-template-columns: auto auto auto;
-  border: 2px red solid;
 }
 
 .coffees {
   width: 200px;
-  border: 2px pink solid;
+}
+
+.posts-container {
+  width: 500px;
 }
 
 .posts {
-  width: 500px;
-  border: 2px blue solid;
+  display: flex;
+  flex-direction: column;
+}
+
+.single-post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 2px #c6944a dashed;
+  padding: 30px 15px 5px 15px;
+}
+
+.post-title {
+  font-size: 20px;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 15px;
+  box-shadow: -4px 1px #6c541e;
+}
+
+.header-btn {
+  display: flex;
+  align-items: center;
+}
+
+button {
+  border-radius: 5px 10px 5px 10px;
+  border: 2px solid #c8954a;
+  border-color: #6c541e #6c541e #c6944a #c6944a;
+}
+
+.single-coffee {
+  display: flex;
+  margin: 10px;
+  padding: 5px 15px;
+  border-top-left-radius: 15px;
+  box-shadow: -4px 1px #6c541e;
+}
+
+.single-coffee > div {
+  padding: 5px;
+}
+
+.x {
+  /* display: none; */
+}
+
+.single-coffee:hover > .x,
+.post-coffee:hover > .x {
+  display: block;
+}
+
+.post-coffee {
+  display: flex;
+  padding: 30px 5px 5px 5px;
+  background-color: aqua;
 }
